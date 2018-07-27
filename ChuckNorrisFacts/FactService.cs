@@ -1,9 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Json;
+using Newtonsoft.Json.Linq;
 
 namespace ChuckNorrisFacts
 {
@@ -16,17 +15,14 @@ namespace ChuckNorrisFacts
 
 		public static async Task<List<Fact>> GetRandomFacts(int factCount = 1)
         {
-
 			using (HttpClient client = new HttpClient())
-			using (HttpResponseMessage response = await client.GetAsync(ApiUrlString + "/" + 5))
+			using (HttpResponseMessage response = await client.GetAsync(ApiUrlString + "/" + factCount))
 			using (HttpContent content = response.Content)
 			{
-				JsonObject jsonObject
-
 				string jsonString = await content.ReadAsStringAsync();
-				JsonSerializerSettings settings = new JsonSerializerSettings();
-				settings.MissingMemberHandling = MissingMemberHandling.Error;
-				List<Fact> facts = JsonConvert.DeserializeObject<List<Fact>>(jsonString, settings);
+				JObject jObject = JObject.Parse(jsonString);
+				JArray value = (JArray)jObject["value"];
+				List<Fact> facts = JsonConvert.DeserializeObject<List<Fact>>(value.ToString());
 				return facts;
 			}
         }

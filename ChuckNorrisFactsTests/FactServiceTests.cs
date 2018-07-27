@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ChuckNorrisFacts;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace ChuckNorrisFactsTests
 {
@@ -11,8 +12,11 @@ namespace ChuckNorrisFactsTests
 		[TestMethod]
 		public void TestGetRandomFacts()
 		{
-			//Fact fact = Task.Run(() => FactService.GetRandomFacts()).Result;
-			//Assert.AreEqual(fact.Type, "success");
+			List<Fact> facts = Task.Run(() => FactService.GetRandomFacts()).Result;
+			facts.ForEach(fact =>
+			{
+				Console.WriteLine(fact.Joke);
+			});
 		}
 	}
 }
