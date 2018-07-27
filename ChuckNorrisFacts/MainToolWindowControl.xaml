@@ -12,13 +12,7 @@
 	</UserControl.Resources>
 
 	<Border Padding="5">
-		<Grid>
-            <Grid.Resources >
-                <Style TargetType="Control" >
-                    <Setter Property="Margin" Value="5,5,5,5" />
-                </Style>
-            </Grid.Resources>
-
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -30,27 +24,19 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-			<Button Grid.Row="0" 
-					Grid.Column="0" 
-					Margin="0,0,5,5" 
-					Content="Settings"
-					/>
-
-			<Button Name="RefreshButton" Grid.Row="0" Grid.Column="1"  Margin="0,0,5,5" Click="Button_Fact_Click">
-                <!--This text-block show the reload sign as unicode character-->
-                <TextBlock Text="&#x50;" FontFamily="Wingdings 3"
-                               FontWeight="Bold" FontSize="16"
-                               Foreground="LightSkyBlue"
-                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button Grid.Row="0" Grid.Column="0" Margin="0,0,5,5">
+                Settings
             </Button>
 
-			<ScrollViewer Grid.Row="1"  Grid.ColumnSpan="3" Name="FactsScrollViewer">
-                <RichTextBox 
-					IsReadOnly="true" 
-					Name="FactsRichTextBox" 
-					BorderThickness="0"
-				/>
-            </ScrollViewer>
+			<Button Grid.Row="0" Grid.Column="1"  Margin="0,0,5,5" Click="Button_Fact_Click" Name="RefreshButton">
+                Load
+            </Button>
+
+            <Border BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="1" Grid.Row="1" Grid.ColumnSpan="3">
+                <ScrollViewer Padding="0, 10, 0, 10" Name="FactsScrollViewer">
+                    <RichTextBox IsReadOnly="true" BorderThickness="0" Name="FactsRichTextBox"/>
+                </ScrollViewer>
+            </Border>
         </Grid>
 
     </Border>
