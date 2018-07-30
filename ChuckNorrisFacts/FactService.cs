@@ -3,6 +3,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
 
 namespace ChuckNorrisFacts
 {
@@ -26,5 +27,12 @@ namespace ChuckNorrisFacts
 				return facts;
 			}
         }
+
+		public static string StripHtml(string htmlString)
+		{
+			var strippedString = Regex.Replace(htmlString, "<.*?>", string.Empty);
+			strippedString = Regex.Replace(htmlString, "&.*?;", string.Empty);
+			return strippedString;
+		}
     }
 }

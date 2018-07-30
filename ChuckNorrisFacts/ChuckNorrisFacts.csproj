@@ -73,15 +73,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\SettingsPanel_16x.png" />
     <VSCTCompile Include="MainToolWindowPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
       <SubType>Designer</SubType>
     </VSCTCompile>
-    <Content Include="Resources\chuck.png" />
-    <Content Include="Resources\chuck_16x16.png">
+    <Resource Include="Resources\chuck_16x16.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
