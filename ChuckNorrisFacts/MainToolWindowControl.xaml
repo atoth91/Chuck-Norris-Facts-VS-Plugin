@@ -38,7 +38,7 @@
 
 				<StackPanel>
 					<Image Source="Resources/chuck_16x16.png" />
-				</StackPanel
+				</StackPanel>
 			</Button>
 
 			<ScrollViewer Grid.Row="1"  Grid.ColumnSpan="3" Name="FactsScrollViewer">
